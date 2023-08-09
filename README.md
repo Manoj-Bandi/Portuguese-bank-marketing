@@ -1,0 +1,51 @@
+# Portuguese-bank-marketing
+
+Problem Statement:
+
+The problem addressed in this project is a binary classification task, where the objective is to predict whether a potential client contacted through a marketing campaign will subscribe to a term deposit offered by a Portuguese banking institution. The goal is to analyze the bank's marketing data, which primarily involves phone calls, and gain insights into the effectiveness of their outreach strategies. The primary aim is to provide recommendations for improving the bank's marketing efforts, thereby increasing the likelihood of successful subscription to their term deposit product.
+
+Motivation:
+
+We wanted to take this topic as it allowed us to understand customer behavior and preferences in the banking industry, which can be applied to other sectors as well. By identifying the factors that influence customers' decision-making, we wanted to help the bank improve its marketing strategies, to increase customer acquisition and revenue. 
+Therefore, by analyzing the bank's marketing data, we can gain valuable insights into customer behavior and preferences, help the bank improve its marketing strategies, and ultimately, enhance its customer satisfaction and revenue. The project presents an exciting opportunity to apply data analysis techniques to real-world marketing problems and provide actionable insights to the banking institution.
+
+Dataset:
+
+The dataset contains information on the direct marketing campaigns of a Portuguese banking institution. It includes 41,188 instances and 20 attributes, primarily related to bank client attributes, the last contact of the current campaign, and social and economic context attributes. The associated task is classification, with the output variable being whether or not the client subscribed to a term deposit (binary: "yes" or "no"). The dataset attributes include age, job type, marital status, education level, credit in default, housing and personal loans, contact communication type, and outcome of previous marketing campaigns, among others.
+
+Logistic Regression - Baseline Model 
+
+Logistic Regression is a statistical method used for predicting binary outcomes, in which the response variable can take only two possible values. It is a widely used technique for classification problems in various fields, including business, finance, healthcare, and engineering.
+In Logistic Regression, we use a transformation function called the sigmoid function, which maps any real-valued number to a probability between 0 and 1. The sigmoid function is expressed as:
+σ(z) = 1 / (1 + e^(-z))
+where z is a linear combination of the input variables and their respective coefficients. The sigmoid function ensures that the predicted probabilities are bounded between 0 and 1, which makes it suitable for binary classification problems.
+The goal of Logistic Regression is to estimate the optimal set of coefficients that maximize the likelihood of the observed data. We can obtain these estimates using the maximum likelihood estimation method or gradient descent optimization. The likelihood function measures the probability of observing the data given the model parameters, and the maximum likelihood estimator maximizes this probability. Alternatively, the negative log-likelihood function is minimized using gradient descent optimization to estimate the parameters.
+We chose logistic regression as our baseline model due to its interpretability and widespread use in binary classification problems.
+
+KNN Model
+
+K-Nearest Neighbor (KNN) is a non-parametric supervised learning method that can be used for both regression and classification problems. It is called a lazy learner algorithm because it does not immediately learn from the training set. Instead, it stores the data during the training time and does not perform any calculations. When it gets new data, it builds the model and classifies the data into a class that is similar to the new data. It works by identifying which data points are closest to a given query point. To do this, it uses distance metrics such as Euclidean distance, which measures the length of a line segment between two points. Decision boundaries are formed based on the distance metrics, which divide the query points into different areas.
+In the context of the bank marketing dataset, KNN can be used as a classification algorithm to predict whether a potential client will subscribe to the bank's term deposit product. The algorithm works by first calculating the distance between the new data point (i.e., the potential client) and the existing data points (i.e., the clients in the training set).
+The KNN algorithm then selects the subset of the training set that contains the k training samples closest to the new data point. The class of the new data point is then determined by taking the majority vote of the class labels of the k nearest neighbors. For example, if the k nearest neighbors of a potential client are all labeled as having subscribed to the term deposit, then the algorithm would predict that this new client is likely to subscribe as well. The Euclidean distance can be used as the distance metric to calculate the distance between the new data point and the existing data points. By using the KNN algorithm in the bank marketing dataset, we can gain insights into which variables are most important in predicting whether a potential client will subscribe to the term deposit product.
+
+Support Vector Machines (SVMs)
+
+Support Vector Machines (SVMs) works by finding a hyperplane in a high-dimensional space that separates the data into different classes. In the case of binary classification, the hyperplane divides the data into two classes: those that will subscribe to a term deposit and those that will not. The hyperplane is chosen based on the maximum margin, which is the distance between the hyperplane and the nearest data points from each class.
+In practice, the data may not be linearly separable, which means that a straight line cannot divide the data into two classes. To handle this, SVMs use slack variables to allow for some misclassification while still trying to maximize the margin. This is called a soft margin classifier. The optimal hyperplane is found by solving a quadratic optimization problem.
+To extend SVMs to nonlinear problems, a kernel function is used to transform the input data into a higher-dimensional space. In the bank marketing case, a radial basis function (RBF) kernel can be used to map the data into a higher-dimensional space where it can be separated by a hyperplane.
+The SVM algorithm will find the optimal hyperplane that maximizes the margin between the two classes of customers - those who subscribed and those who did not. The hyperplane can be linear or non-linear depending on the choice of kernel. Once the model is trained, it can be used to predict whether a new customer is likely to subscribe to a term deposit or not based on their attributes.
+
+Random Forest Classifier
+
+Random Forest is a machine learning algorithm that is used for both regression and classification tasks. A prediction is made using an ensemble learning technique that integrates different decision trees. The Random Forest approach builds a forest of decision trees for classification problems, where each tree is trained on a different portion of the input data and a random subset of the characteristics. The ultimate prediction is established by counting the votes cast by the majority of the forest's individual trees.
+Random Forest has several advantages that make it a good fit for the Bank Marketing classification dataset as it can handle high dimensionality and noisy data. The Bank Marketing dataset is noisy at times and includes a lot of data instances. This type of data can be handled by Random Forest successfully since it may choose a subset of features for each individual tree, which lessens the influence of unnecessary features. Random Forest also reduces overfitting. Insufficient generalization to new data is the outcome of overfitting, which happens when a model is very complicated and matches the training data too closely. By building numerous trees that are trained on various subsets of the data and then merging them to create predictions, Random Forest helps to reduce overfitting.
+Overall, Random Forest is a powerful algorithm that can handle high-dimensional, noisy data and can provide insights into the importance of different features. These characteristics make it a good fit for the Bank Marketing classification dataset.
+
+Gradient Boosting Classifier
+
+Gradient Boosting is a popular machine learning algorithm used for both regression and classification problems. It is an ensemble learning method that builds a strong predictive model by combining multiple weak predictive models. 
+In Gradient Boosting, each new model in the ensemble is trained to minimize the error of the previous model. The key idea is to sequentially add new models to the ensemble, and adjust the weights of each instance in the training data to emphasize those that the previous models failed to predict accurately. 
+Gradient Boosting is particularly well-suited for classification problems, as it is able to handle both binary and multi-class classification tasks. It is also able to handle non-linear relationships between the features and the target variable, which can be useful when dealing with complex datasets.
+In the case of a bank marketing classification dataset, Gradient Boosting could be a good fit because the data is likely to be complex and have non-linear relationships between the features and the target variable (i.e., whether a customer will subscribe to a term deposit or not). The dataset may also have class imbalance, with a relatively small proportion of positive examples (customers who subscribed to a term deposit) compared to negative examples (customers who did not subscribe). Gradient Boosting can be particularly effective in addressing these challenges, by handling non-linear relationships and by weighting the training examples to ensure that the model learns to predict the positive examples as well as the negative examples. Additionally, Gradient Boosting is known to perform well on a wide range of classification tasks, making it a good choice for many types of data.
+
+
